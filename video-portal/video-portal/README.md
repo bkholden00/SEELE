@@ -4,7 +4,7 @@ Access-code protected portal: enter a code → land on an intro video (home page
 → use the "Videos" dropdown in the top banner to visit each lesson's own page
 → under every video, confirm-by-email logs who watched what and when.
 
-## How it works 
+## How it works  
 
 - `app/page.tsx` — access code entry. On success, sets an httpOnly cookie and
   redirects to `/intro`.
