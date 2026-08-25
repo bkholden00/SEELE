@@ -1,4 +1,4 @@
-# Teacher Video Portal
+# Teacher Video Portal 
 
 Access-code protected portal: enter a code → land on an intro video (home page)
 → use the "Videos" dropdown in the top banner to visit each lesson's own page
