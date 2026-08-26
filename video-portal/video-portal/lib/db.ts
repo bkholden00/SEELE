@@ -12,7 +12,10 @@ function getPool(): Pool {
       );
     }
     pool = new Pool({
-      connectionString: process.env.DATABASE_URL || process.env.POSTGRES_URL,
+      connectionString: (process.env.DATABASE_URL || process.env.POSTGRES_URL || "").replace(
+        "sslmode=require",
+        "sslmode=no-verify"
+      ),
       ssl: { rejectUnauthorized: false },
     });
   }
