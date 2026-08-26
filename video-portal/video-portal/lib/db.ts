@@ -6,13 +6,13 @@ let pool: Pool | null = null;
 
 function getPool(): Pool {
   if (!pool) {
-    if (!process.env.DATABASE_URL) {
+    if (!process.env.DATABASE_URL && !process.env.POSTGRES_URL) {
       throw new Error(
         "DATABASE_URL is not set. Add a Postgres integration (Neon/Supabase) in Vercel first."
       );
     }
     pool = new Pool({
-      connectionString: process.env.DATABASE_URL,
+      connectionString: process.env.DATABASE_URL || process.env.POSTGRES_URL,
       ssl: { rejectUnauthorized: false },
     });
   }
