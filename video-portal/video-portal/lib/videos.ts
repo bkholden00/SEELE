@@ -1,20 +1,17 @@
 export type Video = {
-  slug: string;       // used in the URL: /videos/[slug]
-  title: string;      // shown in the nav dropdown and on the page
+  slug: string;
+  title: string;
   description?: string;
-  url: string;        // the Vercel Blob URL for the mp4
+  url: string;
 };
 
-// The intro video is treated as the "home page" after login (app/intro/page.tsx).
-export const introVideo: Video = {
-  slug: "intro",
-  title: "Module 0 – Introduction",
-  description: "Introduction to the Morphological Knowledge Module Series.",
-  url: "https://youtu.be/2QT7vOAby1M",
-};
-
-// Add one entry per lesson video. Order here = order in the dropdown.
 export const videos: Video[] = [
+  {
+    slug: "module-0",
+    title: "Module 0 – Introduction",
+    description: "Introduction to the Morphological Knowledge Module Series.",
+    url: "https://youtu.be/2QT7vOAby1M",
+  },
   {
     slug: "module-1",
     title: "Module 1 – Breaking Down Words Into Word Parts",
@@ -42,11 +39,17 @@ export const videos: Video[] = [
   },
 ];
 
+// Change this each week to whichever slug you want featured on the home page.
+export const featuredSlug = "module-0";
+
 export function getVideoBySlug(slug: string): Video | undefined {
-  if (slug === "intro") return introVideo;
   return videos.find((v) => v.slug === slug);
 }
 
+export function getFeaturedVideo(): Video {
+  return getVideoBySlug(featuredSlug) ?? videos[0];
+}
+
 export function allVideosForNav(): Video[] {
-  return [introVideo, ...videos];
+  return videos;
 }
