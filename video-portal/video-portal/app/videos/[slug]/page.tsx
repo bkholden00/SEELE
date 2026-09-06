@@ -22,16 +22,16 @@ export default async function VideoPage({
     <>
       <NavBar videos={allVideosForNav()} currentSlug={video.slug} />
       <main className="mx-auto max-w-4xl px-4 py-8">
-        <h1 className="text-2xl font-semibold text-slate-900">{video.title}</h1>
+        <h1 className="text-2xl font-semibold text-white">{video.title}</h1>
         {video.description && (
-          <p className="mt-1 text-sm text-slate-500">{video.description}</p>
+          <p className="mt-1 text-sm text-slate-300">{video.description}</p>
         )}
 
         <div className="mt-6">
           <VideoPlayer url={video.url} title={video.title} />
         </div>
 
-        <p className="mt-6 text-sm text-slate-600">
+        <p className="mt-6 text-sm text-slate-300">
           Confirm below once you&apos;ve finished watching this video.
         </p>
 
