@@ -23,9 +23,9 @@ export default function NavBar({
   return (
     <header className="sticky top-0 z-20 bg-slate-900 text-white shadow">
       <div className="mx-auto flex max-w-4xl items-center justify-between px-4 py-3">
-        <Link href="/intro" className="font-semibold tracking-tight">
-          Teacher Video Portal
-        </Link>
+        <Link href="/" className="font-semibold tracking-tight">
+  Teacher Video Portal
+</Link>
 
         <div className="flex items-center gap-4">
           <div className="relative">
