@@ -21,7 +21,7 @@ export default function NavBar({
   }
 
   return (
-    <header className="sticky top-0 z-20 bg-slate-900 text-white shadow">
+    <header className="sticky top-0 z-20 text-white shadow" style={{ backgroundColor: "#123524" }}>
       <div className="mx-auto flex max-w-4xl items-center justify-between px-4 py-3">
         <Link href="/intro" className="font-semibold tracking-tight">
           Teacher Video Portal
