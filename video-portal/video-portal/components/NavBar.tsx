@@ -42,7 +42,7 @@ export default function NavBar({
                 {videos.map((v) => (
                   <Link
                     key={v.slug}
-                    href={v.slug === "intro" ? "/intro" : `/videos/${v.slug}`}
+                    href={`/videos/${v.slug}`}
                     className={`block px-4 py-2 text-sm hover:bg-slate-700 ${
                       v.slug === currentSlug ? "bg-slate-700 font-medium" : ""
                     }`}
