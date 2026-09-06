@@ -21,7 +21,7 @@ export default async function VideoPage({
   return (
     <>
       <NavBar videos={allVideosForNav()} currentSlug={video.slug} />
-      <main className="mx-auto max-w-4xl px-4 py-8">
+      <main className="mx-auto max-w-6xl px-4 py-8">
         <h1 className="text-2xl font-semibold text-white">{video.title}</h1>
         {video.description && (
           <p className="mt-1 text-sm text-slate-300">{video.description}</p>
