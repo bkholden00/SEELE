@@ -45,7 +45,7 @@ export const videos: Video[] = [
 ];
 
 // Change this each week to whichever slug you want featured on the home page.
-export const featuredSlug = "module-1";
+export const featuredSlug = "module-0";
 
 export function getVideoBySlug(slug: string): Video | undefined {
   return videos.find((v) => v.slug === slug);
