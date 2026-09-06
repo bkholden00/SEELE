@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Video } from "@/lib/videos";
 
@@ -13,12 +12,6 @@ export default function NavBar({
   currentSlug: string;
 }) {
   const [open, setOpen] = useState(false);
-  const router = useRouter();
-
-  async function logout() {
-    await fetch("/api/logout", { method: "POST" });
-    router.push("/");
-  }
 
   return (
     <header className="sticky top-0 z-20 bg-slate-900 text-white shadow">
@@ -27,46 +20,37 @@ export default function NavBar({
           Teacher Video Portal
         </Link>
 
-        <div className="flex items-center gap-4">
-          <div className="relative">
-            <button
-              onClick={() => setOpen((o) => !o)}
-              onBlur={() => setTimeout(() => setOpen(false), 150)}
-              className="flex items-center gap-1 rounded-md bg-slate-800 px-3 py-1.5 text-sm hover:bg-slate-700"
-            >
-              Videos
-              <span aria-hidden>▾</span>
-            </button>
-            {open && (
-              <div className="absolute right-0 mt-2 w-56 overflow-hidden rounded-md border border-slate-700 bg-slate-800 shadow-lg">
-                <Link
-                  href="/"
-                  className="block px-4 py-2 text-sm font-semibold hover:bg-slate-700"
-                >
-                  ⭐ Video of the Week
-                </Link>
-                <div className="my-1 border-t border-slate-700" />
-                {videos.map((v) => (
-                  <Link
-                    key={v.slug}
-                    href={`/videos/${v.slug}`}
-                    className={`block px-4 py-2 text-sm hover:bg-slate-700 ${
-                      v.slug === currentSlug ? "bg-slate-700 font-medium" : ""
-                    }`}
-                  >
-                    {v.title}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-
+        <div className="relative">
           <button
-            onClick={logout}
-            className="text-sm text-slate-300 hover:text-white"
+            onClick={() => setOpen((o) => !o)}
+            onBlur={() => setTimeout(() => setOpen(false), 150)}
+            className="flex items-center gap-1 rounded-md bg-slate-800 px-3 py-1.5 text-sm hover:bg-slate-700"
           >
-            Log out
+            Videos
+            <span aria-hidden>▾</span>
           </button>
+          {open && (
+            <div className="absolute right-0 mt-2 w-56 overflow-hidden rounded-md border border-slate-700 bg-slate-800 shadow-lg">
+              <Link
+                href="/"
+                className="block px-4 py-2 text-sm font-semibold hover:bg-slate-700"
+              >
+                ⭐ Video of the Week
+              </Link>
+              <div className="my-1 border-t border-slate-700" />
+              {videos.map((v) => (
+                <Link
+                  key={v.slug}
+                  href={`/videos/${v.slug}`}
+                  className={`block px-4 py-2 text-sm hover:bg-slate-700 ${
+                    v.slug === currentSlug ? "bg-slate-700 font-medium" : ""
+                  }`}
+                >
+                  {v.title}
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </header>
