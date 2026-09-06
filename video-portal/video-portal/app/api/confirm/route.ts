@@ -1,16 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { SESSION_COOKIE } from "@/lib/auth";
 import { logConfirmation } from "@/lib/db";
 import { getVideoBySlug } from "@/lib/videos";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(req: NextRequest) {
-  const accessCode = req.cookies.get(SESSION_COOKIE)?.value;
-  if (!accessCode) {
-    return NextResponse.json({ error: "Session expired. Please re-enter your access code." }, { status: 401 });
-  }
-
   const { email, videoSlug } = await req.json();
 
   if (!email || typeof email !== "string" || !EMAIL_RE.test(email.trim())) {
@@ -22,7 +16,7 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    await logConfirmation({ accessCode, email, videoSlug });
+    await logConfirmation({ email, videoSlug });
   } catch (err) {
     console.error(err);
     return NextResponse.json(
