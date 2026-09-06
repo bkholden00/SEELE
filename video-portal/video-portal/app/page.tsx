@@ -1,5 +1,33 @@
-import { redirect } from "next/navigation";
+import NavBar from "@/components/NavBar";
+import VideoPlayer from "@/components/VideoPlayer";
+import EmailConfirmForm from "@/components/EmailConfirmForm";
+import { allVideosForNav, getFeaturedVideo } from "@/lib/videos";
 
 export default function HomePage() {
-  redirect("/intro");
+  const video = getFeaturedVideo();
+
+  return (
+    <>
+      <NavBar videos={allVideosForNav()} currentSlug={video.slug} />
+      <main className="mx-auto max-w-4xl px-4 py-8">
+        <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+          Featured this week
+        </p>
+        <h1 className="text-2xl font-semibold text-white">{video.title}</h1>
+        {video.description && (
+          <p className="mt-1 text-sm text-slate-300">{video.description}</p>
+        )}
+
+        <div className="mt-6">
+          <VideoPlayer url={video.url} title={video.title} />
+        </div>
+
+        <p className="mt-6 text-sm text-slate-300">
+          Confirm below once you&apos;ve finished watching this video.
+        </p>
+
+        <EmailConfirmForm videoSlug={video.slug} />
+      </main>
+    </>
+  );
 }
