@@ -9,7 +9,7 @@ export default function HomePage() {
   return (
     <>
       <NavBar videos={allVideosForNav()} currentSlug={video.slug} />
-      <main className="mx-auto max-w-6xl px-4 py-8">
+      <main className="px-4 py-8">
         <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">
           Featured this week
         </p>
