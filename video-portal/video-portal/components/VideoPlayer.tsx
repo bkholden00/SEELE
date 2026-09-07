@@ -20,7 +20,7 @@ export default function VideoPlayer({ url, title }: { url: string; title: string
     return (
       <iframe
         className="aspect-video w-full rounded-lg"
-        src={`https://www.youtube-nocookie.com/embed/${youtubeId}`}
+        src={`https://www.youtube-nocookie.com/embed/${youtubeId}?rel=0&modestbranding=1&iv_load_policy=3`}
         title={title}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
